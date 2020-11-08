@@ -10,6 +10,10 @@ before_install:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
+
+before_deploy:
+- rm -rf *.enc .env.enc
+
 deploy:
 - provider: script
   skip_cleanup: true
