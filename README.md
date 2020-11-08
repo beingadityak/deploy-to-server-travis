@@ -4,7 +4,7 @@ This is an example repo for performing deployments on the server using TravisCI 
 
 **Disadvantage:**
 
-- Does not allow you to deploy to multiple servers or take advantage of 
+- Does not allow you to deploy to multiple servers or take advantage of the cloud platform's auto-scaling capabilities.
 
 ## About the App
 
