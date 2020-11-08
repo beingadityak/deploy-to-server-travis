@@ -1,15 +1,15 @@
+require('dotenv').config()
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var jwt = require('jsonwebtoken');
-var config = require('./config');
 var user = require('./app/models/user');
 
 var port = process.env.PORT || 8080;
-mongoose.connect(config.database);
-app.set('superSecret',config.secret);
+mongoose.connect(process.env.MONGO_URL);
+app.set('superSecret',process.env.JWT_SECRET);
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
