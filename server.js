@@ -8,7 +8,7 @@ var jwt = require('jsonwebtoken');
 var user = require('./app/models/user');
 
 var port = process.env.PORT || 8080;
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL, {useUnifiedTopology: true});
 app.set('superSecret',process.env.JWT_SECRET);
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -57,7 +57,7 @@ apiRoutes.post('/auth',function(req,res){
             }
             else
             {
-                var token = jwt.sign(user,app.get('superSecret'),{
+                var token = jwt.sign(user.toJSON(),app.get('superSecret'),{
                         expiresIn : '2h'
                 });
 
