@@ -13,11 +13,11 @@ before_install:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: rsync -r --quiet . appuser@$SERVER_IP:/home/appuser/webapp
+  script: rsync -e "ssh -o StrictHostKeyChecking=no" -r --quiet . appuser@$SERVER_IP:/home/appuser/webapp
   on:
     branch: master
 - provider: script
   skip_cleanup: true
-  script: ssh appuser@$SERVER_IP 'bash ./deploy.sh'
+  script: ssh -o StrictHostKeyChecking=no appuser@$SERVER_IP 'bash ./deploy.sh'
   on:
     branch: master
